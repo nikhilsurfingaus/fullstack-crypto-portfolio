@@ -1,0 +1,36 @@
+.wrapper {
+    color: white;
+    overflow: hidden;
+}
+
+.coin-list {
+    width: 50%;
+    background-color: #2d3e50;
+    color: white;
+}
+
+.coin-list .list-group-item {
+    background-color: #34495e;
+    color: white;
+}
+
+.sign-out-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+
+@media (max-width: 767px) {
+    .sign-out-btn {
+        height: 40px;
+        width: 80px;
+        font-size: 0.8rem;
+    }
+    .form-select {
+        width: 50%;
+        margin-bottom: 0.5rem;
+    }
+    .form-control {
+        width: 50%;
+    }
+}
