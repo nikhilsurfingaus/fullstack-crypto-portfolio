@@ -3,15 +3,43 @@
     overflow: hidden;
 }
 
+.input-group button {
+    z-index: 0 !important;
+}
+
 .coin-list {
     width: 50%;
     background-color: #2d3e50;
     color: white;
 }
 
+.transact {
+    margin-right: 10px;
+    align-self: flex-end;
+}
+
+.coin-list button {
+    font-size: 0.7rem;
+    padding: 0.2rem 0.4rem;
+    margin-left: 0.4rem;
+    width: 25px;
+    height: 25px;
+}
+
 .coin-list .list-group-item {
     background-color: #34495e;
     color: white;
+}
+
+.trash {
+    margin-left: 20px;
+    opacity: 0.5;
+    cursor: pointer;
+}
+
+.trash:hover {
+    transition: 0.5s ease;
+    opacity: 0.8;
 }
 
 .sign-out-btn {
