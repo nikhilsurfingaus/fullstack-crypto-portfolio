@@ -4,6 +4,7 @@ import LoginDisp from './LoginDisp';
 import { auth, db } from './BaseFire';
 import { collection, getDocs, updateDoc, doc } from "firebase/firestore"; 
 import { ListGroup, ListGroupItem } from 'reactstrap';
+import Modal from 'react-modal';
 
 const Main = () => {
   const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false);
@@ -72,6 +73,66 @@ const Main = () => {
     }
   };
 
+  const [transferCoin, setTransferCoin] = useState('')
+  const [transAmount, setTransAmount] = useState<number>(0)
+  const [openModal, setOpenModal] = useState<boolean>(false)
+  const [isNeg, setIsNeg] = useState<boolean>(false)
+  const [transText, setTransText] = useState<string>("Amount In")
+
+  function initTransfer(coin: string, negTrans?:boolean) {
+    if (negTrans) {
+      setIsNeg(true)
+      setTransText("Amount Out")
+    }
+    setTransferCoin(coin)
+    setShowTrans(true)
+    hideModal(false)
+    setOpenModal(true)
+  }
+
+  const transaction = async(coin: string, amount:number) => {
+    console.log("Transfered: ", amount, " into ", coin)
+    setShowTrans(false)
+  // Check if coin exists in user's portfolio
+  if (!(coin in coins)) {
+    alert("Coin does not exist in your portfolio!");
+    return;
+  }
+
+  // Calculate new coin amount after transaction
+  if (isNeg) {
+    amount = -amount
+  } 
+  const newCoinAmount = coins[coin] + amount;
+
+  // Update Firestore document with new coin amount
+  const docRef = doc(db, "users", userEmail);
+  await updateDoc(docRef, {
+    [`Coins.${coin}`]: newCoinAmount,
+  });
+
+  // Update local state with new coin amount
+  const newCoins = { ...coins, [coin]: newCoinAmount };
+  setCoins(newCoins);
+  hideModal(false)
+  setTransferCoin('')
+  setTransAmount(0)
+  setIsNeg(false)
+  setTransText("Amount In")
+ }
+
+ function hideModal(state:boolean) {
+  setOpenModal(state)
+ }
+
+ function handleClose() {
+  setOpenModal(false)
+  setTransferCoin('')
+  setTransAmount(0)
+  setIsNeg(false)
+  setTransText("Amount In")
+ }
+
     return (
         <div className="wrapper mt-5">
           <h2>My Portfolio</h2>
@@ -105,18 +166,24 @@ const Main = () => {
                         <span>{coin}</span>
                     </div>
                     <div className="d-flex align-items-center">
-                        {showTrans ? (
-                            <input type="number" className="form-control" placeholder="Enter amount"   />
-
-                        ) : null}
-                        <button onClick={() => setShowTrans(!showTrans)} className="btn btn-sm btn-success mr-1">+</button>
-                        <button className="btn btn-sm btn-danger">-</button>
+                        <button onClick={() => initTransfer(coin)} className="btn btn-sm btn-success mr-1">+</button>
+                        <button onClick={() => initTransfer(coin, true)} className="btn btn-sm btn-danger">-</button>
                         <span className="mr-2">{amount}</span>
                     </div>
                     </ListGroupItem>
                 ))}
                 </ListGroup>
-
+                {showTrans ? (
+                  <div>
+                    <Modal isOpen={openModal} className="modal-container">
+                      <button className="modal-close-btn" onClick={() => handleClose()}>X</button>
+                      <div className="modal-header">{transferCoin} Transaction</div>
+                      <label className='fw-bold'>{transText}</label>
+                      <input type="number" className="modal-input" placeholder="Enter amount" value={transAmount} onChange={(e) => setTransAmount(parseFloat(e.target.value))} />
+                      <button className="modal-button" onClick={() => transaction(transferCoin, transAmount)}>Transfer</button>
+                    </Modal>
+                  </div>
+                  ) : null}
             </div>
           ) : (
             <div>
