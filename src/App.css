@@ -5,3 +5,13 @@ body {
 .App {
     text-align: center;
 }
+
+::-webkit-scrollbar {
+    width: 10px;
+    background: #0d2e4d;
+}
+
+::-webkit-scrollbar-thumb {
+    border-radius: 2em;
+    background: linear-gradient(-45deg, #000157, #1439b1, #092258, #161881);
+}

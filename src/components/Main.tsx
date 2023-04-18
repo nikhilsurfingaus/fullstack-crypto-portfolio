@@ -6,6 +6,14 @@ import { collection, getDocs, updateDoc, doc, deleteField  } from "firebase/fire
 import { ListGroup, ListGroupItem } from 'reactstrap';
 import Modal from 'react-modal';
 import {BsTrash} from 'react-icons/bs'
+import Select from "react-select";
+
+type loaded = {
+  label: string;
+  value: string;
+  src: string;
+  rank: number;
+};
 
 const Main = () => {
   const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false);
@@ -15,6 +23,9 @@ const Main = () => {
   const [coinAmount, setCoinAmount] = useState<string>("");
 
   const [showTrans, setShowTrans] = useState<boolean>(false)
+
+  //Used for Select
+  const [loadedCoins, setLoadedCoins] = useState<loaded[] | null>(null);
 
   useEffect(() => {
     const email = localStorage.getItem('email');
@@ -29,11 +40,55 @@ const Main = () => {
             setCoins(doc.data().Coins || {});
           }
         });
+
+        const options = {
+          method: "GET",
+          headers: {
+            "X-RapidAPI-Key":
+              "51427f28b5mshfbd0334a294cd80p16ef0fjsn7d95525de3a3",
+            "X-RapidAPI-Host": "coinranking1.p.rapidapi.com"
+          }
+        };
+  
+        fetch(
+          "https://coinranking1.p.rapidapi.com/coins?referenceCurrencyUuid=yhjMzLPhuIDl&timePeriod=24h&tiers%5B0%5D=1&orderBy=marketCap&orderDirection=desc&limit=600&offset=0",
+          options
+        )
+          .then((res) => res.json())
+          .then((res) => {
+            const coins = res.data.coins;
+            for (let i = 0; i < coins.length; i++) {
+              const coinName = coins[i].symbol;
+              // Check if coin name already exists in loadedCoins
+              if (loadedCoins?.some((coin) => coin.value === coinName)) {
+                continue;
+              }
+  
+              const newCoin: loaded = {
+                label: coins[i].name,
+                value: coins[i].symbol,
+                src: coins[i].iconUrl,
+                rank: coins[i].rank
+              };
+              setLoadedCoins((prevCoins) =>
+                prevCoins ? [...prevCoins, newCoin] : [newCoin]
+              );
+            }})
       };
 
       fetchData();
     }
+       // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+
+  //Drop Down Selector
+  const [selectCoin, setSelectCoin] = useState(null);
+
+  const handleChange = (selectedOption: any) => {
+    setSelectCoin(selectedOption.value);
+    setSelectedCoin(selectedOption.value.toString())
+  };
 
   const signOut = () => {
     auth.signOut().then(() => {
@@ -42,10 +97,6 @@ const Main = () => {
       setCoins({});
       localStorage.removeItem('email');
     });
-  };
-
-  const handleCoinSelect = (event: React.ChangeEvent<HTMLSelectElement>) => {
-    setSelectedCoin(event.target.value);
   };
 
   const handleCoinAmountChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -92,7 +143,6 @@ const Main = () => {
   }
 
   const transaction = async(coin: string, amount:number) => {
-    console.log("Transfered: ", amount, " into ", coin)
     setShowTrans(false)
   // Check if coin exists in user's portfolio
   if (!(coin in coins)) {
@@ -144,7 +194,6 @@ const Main = () => {
 
  function delCoin(trashModal:boolean, coin:string) {
   setOpenTrash(trashModal)
-  console.log("Coin to delete: ", coin)
   setDeleteCoin(coin)
  }
 
@@ -171,38 +220,35 @@ const Main = () => {
       setCoins(newCoins);
       setDeleteCoin("");
       setOpenTrash(false)
- }
+  }
 
     return (
         <div className="wrapper mt-5">
-          <h2>My Portfolio</h2>
+          <h2 className='mb-5' >MoonCoinCollector</h2>
           {isLoggedIn ? (
             <div>
               <button className="btn btn-danger sign-out-btn" onClick={signOut}>Sign out</button>
-              <h2>YOU ARE LOGGED IN as {userEmail}</h2>
-              <h3>Add Coin</h3>
-              <div className="row mb-3">
+              <h2 className='user-email'>{userEmail}</h2>
+              <div className="row mb-5">
                 <div className="col-md-4 offset-md-4">
                     <div className="input-group">
-                    <select className="form-select" value={selectedCoin} onChange={handleCoinSelect}>
-                        <option value="">Select a coin</option>
-                        <option value="BTC">BTC</option>
-                        <option value="ETH">ETH</option>
-                        <option value="BNB">BNB</option>
-                        <option value="XRP">XRP</option>
-                    </select>
-                    {selectedCoin && (
+                    {loadedCoins ? (
+                      <Select placeholder="Search Coin..." className='react-select text-black' options={loadedCoins} onChange={handleChange} />
+                    ): (<p>Loading...</p>)}
+                    {selectCoin && (
                         <input type="number" className="form-control" placeholder="Enter amount" value={coinAmount} onChange={handleCoinAmountChange} />
                     )}
                     <button className="btn btn-primary" onClick={handleAddCoin}>Add Coin</button>
                     </div>
                 </div>
                 </div>
-              <h3>Existing Coins</h3>
+              <h3 className='mb-3' >My Portfolio Coins</h3>
               <ListGroup className="coin-list mx-auto">
                 {Object.entries(coins).map(([coin, amount]) => (
                   <ListGroupItem key={coin} className="d-flex justify-content-between align-items-center">
                     <div className="coin-info d-flex align-items-center">
+                    <span className='rank' >#{loadedCoins?.find(c => c.value === coin)?.rank}</span>
+                    <img src={loadedCoins?.find(c => c.value === coin)?.src} alt={`${coin} icon`} className="coin-icon mr-2" />
                       <span>{coin}</span>
                     </div>
                     <div className="d-flex align-items-end">
@@ -235,12 +281,15 @@ const Main = () => {
                       <button className="modal-button mb-2" onClick={() => handleSure() } >Remove {deleteCoin}</button>
                     </Modal>
 
+
+
             </div>
           ) : (
             <div>
               <LoginDisp isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} setUserEmail={setUserEmail} />
             </div>
           )}
+          <div className='footer'>Copyright 2023 Nikhil Naik | @WaveFlightSimulation All Rights Reserved </div>
         </div>
       );
       
