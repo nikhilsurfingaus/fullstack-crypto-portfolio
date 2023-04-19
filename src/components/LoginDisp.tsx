@@ -1,6 +1,9 @@
 import { useState, useEffect } from 'react';
 import { auth, provider } from './BaseFire';
 import { signInWithPopup, onAuthStateChanged } from 'firebase/auth';
+import {AiOutlineGooglePlus} from 'react-icons/ai'
+import './Login.css'
+
 
 type LoginToContinueProps = {
   isLoggedIn: boolean;
@@ -31,9 +34,9 @@ const LoginDisp = ({ isLoggedIn, setIsLoggedIn, setUserEmail }: LoginToContinueP
   }, [setIsLoggedIn]);
 
   return (
-    <div>
-      <h3>Login To Continue Component</h3>
-      <button onClick={SignIn}>Login</button>
+    <div className='login' >
+      <h3>Login To View Portfolio</h3>
+      <button className='btn btn-primary' onClick={SignIn}>Login <AiOutlineGooglePlus style={{fontSize: "1.2rem"}} /> </button>
       <p>{value}</p>
     </div>
   );

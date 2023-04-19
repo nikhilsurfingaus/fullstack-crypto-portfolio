@@ -8,6 +8,10 @@
     align-items: center;
 }
 
+.title {
+    font-size: 2.5rem !important;
+}
+
 .coin-icon {
     width: 32px;
     height: 32px;
@@ -28,11 +32,11 @@
 }
 
 .coin-list .list-group-item:nth-child(even) {
-    background-color: #253e57;
+    background-color: #1b4b7a;
 }
 
 .coin-list .list-group-item:hover {
-    background-color: #3c5772;
+    background-color: #366ca3;
 }
 
 .react-select {
@@ -50,6 +54,7 @@
     padding: 5px 5px 5px 5px;
     margin-left: 10px;
     color: #9da7b8;
+    border-radius: 10px;
 }
 
 .transact {
@@ -66,7 +71,7 @@
 }
 
 .coin-list .list-group-item {
-    background-color: #34495e;
+    background-color: #20568c;
     color: white;
 }
 
@@ -83,7 +88,7 @@
 
 .sign-out-btn {
     position: absolute;
-    top: 10px;
+    top: -10px;
     right: 10px;
 }
 
@@ -156,23 +161,30 @@
     opacity: 0.76;
 }
 
-.footer {
-    position: relative;
-    font-weight: bold;
-    font-size: 0.75rem;
-    opacity: 0.4;
-    bottom: 0;
-    padding-top: 100px !important;
-    width: 100%;
-    text-align: center;
-    padding: 20px;
+.remove {
+    width: 300px !important;
+    height: 180px !important;
+    border-radius: 10px !important;
+    padding: 20px !important;
+}
+
+.remove .modal-button {
+    padding: 10px !important;
+    margin-bottom: 0 !important;
+}
+
+.add-coin {
+    margin-top: 0px !important;
 }
 
 @media (max-width: 767px) {
     .sign-out-btn {
-        height: 40px;
-        width: 80px;
-        font-size: 0.8rem;
+        height: 30px;
+        width: 70px;
+        font-size: 0.6rem !important;
+    }
+    .user-email {
+        font-size: 0.6rem;
     }
     .form-select {
         width: 50%;
@@ -180,5 +192,27 @@
     }
     .form-control {
         width: 50%;
+    }
+    .coin-list {
+        width: 90%;
+    }
+    .coin-info {
+        display: flex;
+        align-items: center;
+    }
+    .coin-icon {
+        width: 32px;
+        height: 32px;
+        object-fit: contain;
+        /* or object-fit: cover; depending on your preference */
+        margin-right: 10px;
+        margin-left: 15px;
+    }
+    .title {
+        font-size: 2rem !important;
+    }
+    .input-group {
+        width: 80% !important;
+        margin: auto !important;
     }
 }

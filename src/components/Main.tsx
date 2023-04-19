@@ -7,6 +7,8 @@ import { ListGroup, ListGroupItem } from 'reactstrap';
 import Modal from 'react-modal';
 import {BsTrash} from 'react-icons/bs'
 import Select from "react-select";
+import {SiCoinmarketcap} from 'react-icons/si'
+
 
 type loaded = {
   label: string;
@@ -51,7 +53,7 @@ const Main = () => {
         };
   
         fetch(
-          "https://coinranking1.p.rapidapi.com/coins?referenceCurrencyUuid=yhjMzLPhuIDl&timePeriod=24h&tiers%5B0%5D=1&orderBy=marketCap&orderDirection=desc&limit=600&offset=0",
+          "https://coinranking1.p.rapidapi.com/coins?referenceCurrencyUuid=yhjMzLPhuIDl&timePeriod=24h&tiers%5B0%5D=1&orderBy=marketCap&orderDirection=desc&limit=1000&offset=0",
           options
         )
           .then((res) => res.json())
@@ -64,6 +66,7 @@ const Main = () => {
                 continue;
               }
   
+
               const newCoin: loaded = {
                 label: coins[i].name,
                 value: coins[i].symbol,
@@ -75,7 +78,6 @@ const Main = () => {
               );
             }})
       };
-
       fetchData();
     }
        // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -224,7 +226,7 @@ const Main = () => {
 
     return (
         <div className="wrapper mt-5">
-          <h2 className='mb-5' >MoonCoinCollector</h2>
+          <h2 className='mb-5 title' > <SiCoinmarketcap /> MoonCoinCollector</h2>
           {isLoggedIn ? (
             <div>
               <button className="btn btn-danger sign-out-btn" onClick={signOut}>Sign out</button>
@@ -238,18 +240,18 @@ const Main = () => {
                     {selectCoin && (
                         <input type="number" className="form-control" placeholder="Enter amount" value={coinAmount} onChange={handleCoinAmountChange} />
                     )}
-                    <button className="btn btn-primary" onClick={handleAddCoin}>Add Coin</button>
+                    <button className="btn btn-primary add-coin" onClick={handleAddCoin}>Add Coin</button>
                     </div>
                 </div>
                 </div>
-              <h3 className='mb-3' >My Portfolio Coins</h3>
+              <h3 className='mb-3 head' >My Portfolio Coins</h3>
               <ListGroup className="coin-list mx-auto">
                 {Object.entries(coins).map(([coin, amount]) => (
                   <ListGroupItem key={coin} className="d-flex justify-content-between align-items-center">
                     <div className="coin-info d-flex align-items-center">
                     <span className='rank' >#{loadedCoins?.find(c => c.value === coin)?.rank}</span>
                     <img src={loadedCoins?.find(c => c.value === coin)?.src} alt={`${coin} icon`} className="coin-icon mr-2" />
-                      <span>{coin}</span>
+                      <span className='fw-bold' >{coin}</span>
                     </div>
                     <div className="d-flex align-items-end">
                       <div className="transact d-flex align-items-end">
@@ -265,7 +267,7 @@ const Main = () => {
 
                 {showTrans ? (
                   <div>
-                    <Modal isOpen={openModal} className="modal-container">
+                    <Modal isOpen={openModal} className="modal-container transaction">
                       <button className="modal-close-btn" onClick={() => handleClose()}>X</button>
                       <div className="modal-header">{transferCoin} Transaction</div>
                       <label className='fw-bold'>{transText}</label>
@@ -275,7 +277,7 @@ const Main = () => {
                   </div>
                   ) : null}
 
-                    <Modal isOpen={openTrash} className="modal-container" ariaHideApp={false}>
+                    <Modal isOpen={openTrash} className="modal-container remove" ariaHideApp={false}>
                       <button className="modal-close-btn" onClick={() => closeSure()}>X</button>
                       <p>Remove {deleteCoin} From Portfolio?</p>
                       <button className="modal-button mb-2" onClick={() => handleSure() } >Remove {deleteCoin}</button>
@@ -289,7 +291,6 @@ const Main = () => {
               <LoginDisp isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} setUserEmail={setUserEmail} />
             </div>
           )}
-          <div className='footer'>Copyright 2023 Nikhil Naik | @WaveFlightSimulation All Rights Reserved </div>
         </div>
       );
       
