@@ -17,12 +17,14 @@ src="https://firebase.google.com/static/images/brand-guidelines/logo-vertical.pn
 - **Firebase** is the backend database making this application fullstack, new coins and user authentication schemas pass through Firebase, with users authenticated via google gmail login
 
 ## Description 
-The website was designed and created by Nikhil Naik, showcasing his skills and projects.
+MoonCoinCollector allows crypto  investors to easily track their portfolio, logging in, with session data cached meaning you don't need to login in if you close the page. We have 1000+ cryptos avaliable to add to your portfolio. 
 
 Features:
-- Multiple Pages (React Router): The website has multiple pages to showcase various aspects of Nikhil's skills and projects.
-- Fully Responsive: The website is fully responsive and works well on all devices.
-- Modern Design: The website has a modern and visually appealing design.
+- Track 1000+ crypto's with clean simple UI/UX
+- Add amount of initial crypto
+- Modify existing crypto portfolio ADD, SUBTRACT or DELETE
+- Sign In or Out using Firebase Auth via Google
+- Mobile responsiveness design
 
 ## Screenshots 
 <p float="left">
