@@ -26,42 +26,35 @@ Features:
 
 ## Screenshots 
 <p float="left">
-  <img src="https://github.com/nikhilsurfingaus/portfolio/blob/master/src/assets/portfolio/demo1.jpg" height=45% width=45% />
-  <img src="https://github.com/nikhilsurfingaus/portfolio/blob/master/src/assets/portfolio/demo2.jpg" height=45% width=45% />
-  <img src="https://github.com/nikhilsurfingaus/portfolio/blob/master/src/assets/portfolio/demo3.jpg" height=45% width=45% />
-  <img src="https://github.com/nikhilsurfingaus/portfolio/blob/master/src/assets/portfolio/demo6.jpg" height=45% width=45% />
-  <img src="https://github.com/nikhilsurfingaus/portfolio/blob/master/src/assets/portfolio/demo4.jpg" height=45% width=45% />
-  <img src="https://github.com/nikhilsurfingaus/portfolio/blob/master/src/assets/portfolio/demo5.jpg" height=45% width=45% />
+  <img src="https://github.com/nikhilsurfingaus/fullstack-crypto-portfolio/blob/master/src/assets/1.jpg" height=45% width=45% />
+  <img src="https://github.com/nikhilsurfingaus/fullstack-crypto-portfolio/blob/master/src/assets/2.png" height=45% width=45% />
+  <img src="https://github.com/nikhilsurfingaus/fullstack-crypto-portfolio/blob/master/src/assets/3.jpg" height=45% width=45% />
+  <img src="https://github.com/nikhilsurfingaus/fullstack-crypto-portfolio/blob/master/src/assets/4.jpg" height=45% width=45% />
+  <img src="https://github.com/nikhilsurfingaus/fullstack-crypto-portfolio/blob/master/src/assets/5.jpg" height=45% width=45% />
+  <img src="https://github.com/nikhilsurfingaus/fullstack-crypto-portfolio/blob/master/src/assets/fire.jpg" height=45% width=45% />
+  <img src="https://github.com/nikhilsurfingaus/fullstack-crypto-portfolio/blob/master/src/assets/mobile.jpg" height=25% width=25% />
 </p>
 
 ## Libraries
-    "@ionic/react": "^7.0.1",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
     "@types/jest": "^27.5.2",
     "@types/node": "^16.18.23",
-    "@types/react": "^18.0.33",
+    "@types/react": "^18.0.35",
     "@types/react-dom": "^18.0.11",
-    "animate.css": "^4.1.1",
     "bootstrap": "^5.2.3",
-    "emailjs-com": "^3.2.0",
-    "framer-motion": "^10.11.2",
+    "firebase": "^9.19.1",
     "react": "^18.2.0",
-    "react-awesome-reveal": "^4.2.3",
-    "react-bootstrap": "^2.7.2",
+    "react-bootstrap": "^2.7.3",
     "react-dom": "^18.2.0",
     "react-icons": "^4.8.0",
     "react-modal": "^3.16.1",
-    "react-notifications-component": "^4.0.1",
-    "react-router-dom": "^6.10.0",
     "react-scripts": "5.0.1",
-    "react-scroll-to-top": "^3.0.0",
-    "react-tilt": "^1.0.2",
-    "react-tooltip": "^5.10.5",
-    "react-vertical-timeline-component": "^3.6.0",
+    "react-select": "^5.7.2",
+    "react-tooltip": "^5.11.1",
+    "reactstrap": "^9.1.9",
     "typescript": "^4.9.5",
-    "typewriter-effect": "^2.19.0",
     "web-vitals": "^2.1.4"
 
 ## Copyright
