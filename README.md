@@ -1,46 +1,64 @@
-# Getting Started with Create React App
+# <img src="https://github.com/nikhilsurfingaus/fullstack-crypto-portfolio/blob/master/src/assets/logo.png" alt="drawing" height="40" width="40"/> MoonCoinCollector 
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Site Link: [https://mooncoincollector.io](https://mooncoincollector.netlify.app/)
 
-## Available Scripts
+## Website Powered By: 
+<img src="https://cdn.freebiesupply.com/logos/large/2x/react-1-logo-png-transparent.png" alt="drawing" width="100"/> <img 
+src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b2/Bootstrap_logo.svg/1280px-Bootstrap_logo.svg.png" alt="drawing" height=100 width="120"/> <img 
+src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4c/Typescript_logo_2020.svg/1200px-Typescript_logo_2020.svg.png" alt="drawing" width="100"/> <img 
+src="https://firebase.google.com/static/images/brand-guidelines/logo-vertical.png" alt="drawing" width="100"/> 
 
-In the project directory, you can run:
+- **React** Framework Library Web Application SaveYT.net enables users to download videos from Youtube in a range of video/audio formats. Includes a tutorial on how to use the web app. As well as ability to download and run the web app locally on a local server. 
 
-### `npm start`
+- **Bootstrap V5** is a free, open source front-end development framework for the creation of websites and web apps. Designed to enable responsive development of mobile-first websites, Bootstrap provides a collection of syntax for template designs.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+- **React TypeScript** is a programming language and library combination used for building web applications that combines the React JavaScript library with the TypeScript language for improved type checking and increased developer productivity.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+- **Firebase** is the backend database making this application fullstack, new coins and user authentication schemas pass through Firebase, with users authenticated via google gmail login
 
-### `npm test`
+## Description 
+MoonCoinCollector allows crypto  investors to easily track their portfolio, logging in, with session data cached meaning you don't need to login in if you close the page. We have 1000+ cryptos avaliable to add to your portfolio. 
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Features:
+- Track 1000+ crypto's with clean simple UI/UX
+- Add amount of initial crypto
+- Modify existing crypto portfolio ADD, SUBTRACT or DELETE
+- Sign In or Out using Firebase Auth via Google
+- Mobile responsiveness design
 
-### `npm run build`
+## Screenshots 
+<p float="left">
+  <img src="https://github.com/nikhilsurfingaus/fullstack-crypto-portfolio/blob/master/src/assets/1.jpg" height=45% width=45% />
+  <img src="https://github.com/nikhilsurfingaus/fullstack-crypto-portfolio/blob/master/src/assets/2.png" height=45% width=45% />
+  <img src="https://github.com/nikhilsurfingaus/fullstack-crypto-portfolio/blob/master/src/assets/3.jpg" height=45% width=45% />
+  <img src="https://github.com/nikhilsurfingaus/fullstack-crypto-portfolio/blob/master/src/assets/4.jpg" height=45% width=45% />
+  <img src="https://github.com/nikhilsurfingaus/fullstack-crypto-portfolio/blob/master/src/assets/5.jpg" height=45% width=45% />
+  <img src="https://github.com/nikhilsurfingaus/fullstack-crypto-portfolio/blob/master/src/assets/fire.jpg" height=45% width=45% />
+  <img src="https://github.com/nikhilsurfingaus/fullstack-crypto-portfolio/blob/master/src/assets/mobile.jpg" height=25% width=25% />
+</p>
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Libraries
+    "@testing-library/jest-dom": "^5.16.5",
+    "@testing-library/react": "^13.4.0",
+    "@testing-library/user-event": "^13.5.0",
+    "@types/jest": "^27.5.2",
+    "@types/node": "^16.18.23",
+    "@types/react": "^18.0.35",
+    "@types/react-dom": "^18.0.11",
+    "bootstrap": "^5.2.3",
+    "firebase": "^9.19.1",
+    "react": "^18.2.0",
+    "react-bootstrap": "^2.7.3",
+    "react-dom": "^18.2.0",
+    "react-icons": "^4.8.0",
+    "react-modal": "^3.16.1",
+    "react-scripts": "5.0.1",
+    "react-select": "^5.7.2",
+    "react-tooltip": "^5.11.1",
+    "reactstrap": "^9.1.9",
+    "typescript": "^4.9.5",
+    "web-vitals": "^2.1.4"
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Copyright
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+**Copyrights 2023, Developed by Nikhil Naik. @WaveFlightSimulation All Rights Reserved.**
