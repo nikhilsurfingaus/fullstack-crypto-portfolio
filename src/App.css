@@ -29,6 +29,13 @@ body {
     padding: 0px;
 }
 
+@media (max-width: 767px) {
+    .footer {
+        width: 75%;
+        margin: auto;
+    }
+}
+
 @media (min-width: 1600px) {
     .footer {
         padding-top: 200px !important;
