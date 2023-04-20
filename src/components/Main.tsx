@@ -31,6 +31,7 @@ const Main = () => {
 
   useEffect(() => {
     const email = localStorage.getItem('email');
+
     if (email) {
       setUserEmail(email);
       setIsLoggedIn(true);
@@ -76,13 +77,13 @@ const Main = () => {
               setLoadedCoins((prevCoins) =>
                 prevCoins ? [...prevCoins, newCoin] : [newCoin]
               );
-            }})
+            }
+          })
       };
       fetchData();
     }
        // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-
+  }, [isLoggedIn]);
 
   //Drop Down Selector
   const [selectCoin, setSelectCoin] = useState(null);
