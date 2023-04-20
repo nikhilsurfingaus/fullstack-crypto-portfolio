@@ -27,7 +27,6 @@ Features:
 - Mobile responsiveness design
 
 ## Screenshots 
-REQUIRES EXISTING EMAIL IN MY FIRESTORE DB TO USE SITE, SEND ME A DM IF YOU WANT AN ACCOUNT
 <p float="left">
   <img src="https://github.com/nikhilsurfingaus/fullstack-crypto-portfolio/blob/master/src/assets/1.jpg" height=45% width=45% />
   <img src="https://github.com/nikhilsurfingaus/fullstack-crypto-portfolio/blob/master/src/assets/2.png" height=45% width=45% />
