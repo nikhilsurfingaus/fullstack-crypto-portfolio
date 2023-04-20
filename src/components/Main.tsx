@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import './Main.css';
 import LoginDisp from './LoginDisp';
 import { auth, db } from './BaseFire';
-import { collection, getDocs, updateDoc, doc, deleteField  } from "firebase/firestore"; 
+import { collection, getDocs, updateDoc, doc, deleteField, setDoc  } from "firebase/firestore"; 
 import { ListGroup, ListGroupItem } from 'reactstrap';
 import Modal from 'react-modal';
 import {BsTrash} from 'react-icons/bs'
@@ -37,12 +37,18 @@ const Main = () => {
       setIsLoggedIn(true);
 
       const fetchData = async () => {
+        let emailExists = false;
+
         const querySnapshot = await getDocs(collection(db, "users"));
         querySnapshot.forEach((doc) => {
           if (doc.id === email) {
+            emailExists = true;
             setCoins(doc.data().Coins || {});
           }
         });
+        if (!emailExists) {
+          await setDoc(doc(db, "users", email), { email: email });
+        }
 
         const options = {
           method: "GET",
