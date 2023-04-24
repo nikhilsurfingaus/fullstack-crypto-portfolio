@@ -1,4 +1,4 @@
-# <img src="https://github.com/nikhilsurfingaus/fullstack-crypto-portfolio/blob/master/src/assets/logo.png" alt="drawing" height="40" width="40"/> MoonCoinCollector 
+# <img src="https://github.com/nikhilsurfingaus/fullstack-crypto-portfolio/blob/master/src/assets/logo.png" alt="drawing" height="40" width="40"/> MoonCoinCollector Web App
 
 ## Site Link: [https://mooncoincollector.io](https://mooncoincollector.netlify.app/)
 
